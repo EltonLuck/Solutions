@@ -1,0 +1,25 @@
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # defaultdict is an unordered map that doesn't give any keyErrors so we can bring all the key values to zero no problem
+        size = defaultdict(int)
+        
+        # inrease the frequency values for each letter in s
+        for n in s:
+            size[n] += 1
+        
+        # decrease the frequency values for each letter in t
+        for n in t:
+            size[n] -= 1
+
+        # if there are any nonzero values left then the two are not anagrams of eachother
+        for n in size.values():
+            if n != 0:
+                return False
+
+        return True
+        
