@@ -1,0 +1,19 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        
+        solutionTable = {}
+        # iterate through the array and check if the compliment of the target and the current number is in the hashmap 
+        # if it is return the indexes of the compliment and the current number
+        # if not then add the current number and index to the hashmap
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in solutionTable:
+                return [solutionTable[complement], i]
+            solutionTable[nums[i]] = i
+        # if no solution is found return an empty list
+        return []
